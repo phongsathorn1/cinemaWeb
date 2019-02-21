@@ -1,9 +1,11 @@
 <template>
   <div class="movie-card" @mouseover="cardHover" @mouseout="cardHoverOut" v-bind:class="cardStyle">
-    <div class="movie-card-poster" v-bind:style="{backgroundImage: 'url('+image+')'}"></div>
+    <div class="movie-card-poster">
+      <img v-bind:src="image">
+    </div>
     <div class="movie-card-info">
       <h2>{{title}}</h2>
-      <span>วันที่เข้าฉาย {{date}}</span>
+      <span>วันที่เข้าฉาย {{stringDate}}</span>
     </div>
   </div>
 </template>
@@ -15,7 +17,8 @@ export default {
     return {
       cardStyle: {
         "card-hover": false
-      }
+      },
+      // movieDate: this.date
     };
   },
   methods: {
@@ -25,38 +28,55 @@ export default {
     cardHoverOut() {
       this.cardStyle["card-hover"] = false;
     }
+  },
+  computed: {
+    stringDate: () => {
+      // return this.movieDate.getFullYear()
+    }
   }
 };
 </script>
 
 <style lang="scss">
+$secondary-bg-color: #2b2b2b;
+
 .movie-card .movie-card-info h2 {
   font-size: 1.3em;
   margin-bottom: 0px;
+  font-weight: bold;
 }
 
 .movie-card .movie-card-info {
-  margin-top: 10px;
   padding: 5px;
   text-align: center;
+  background: $secondary-bg-color;
+  padding-top: 10px;
+  // padding: 10px 5px;
 }
 
 .movie-card {
-  background-color: #141414;
+  background-color: $secondary-bg-color;
+  margin: 0px 5px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 20px 10px;
   cursor: pointer;
 }
 
 .movie-card-poster {
-  height: 240px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.movie-card-poster img {
+  margin: auto;
+  display: block;
+  width: 100%;
 }
 
 .card-hover {
-  border: 3px solid #ffffff;
-  padding: 7px;
+  // padding: 7px;
+  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.68);
+  border-radius: 5px;
 }
 </style>
