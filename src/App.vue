@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss">
 $primary-black: #141414;
+$secondary-bg-color: #2b2b2b;
 
 body{
   background-color: $primary-black;
@@ -53,5 +54,14 @@ h1{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
+}
+
+.card{
+  background: $secondary-bg-color;
+  padding: 10px 20px;
+}
+
+hr{
+  border-color: #717171;
 }
 </style>

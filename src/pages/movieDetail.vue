@@ -5,7 +5,7 @@
         <img :src="movie.image_url" width="200px">
         <router-link :to="movie.id+'/booking'">จองตั๋วภาพยนตร์</router-link>
         <p>วันที่เข้าฉาย: {{movie.avaliable_date}}</p>
-        <p v-html="movie.synopsis" id="synopsis"></p>
+        <p v-html="movie.synopsis" id="synopsis-detail"></p>
     </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-#synopsis{
+#synopsis-detail{
     text-align: justify;
     white-space: pre-wrap;
 }
