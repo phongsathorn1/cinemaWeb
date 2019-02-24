@@ -30,6 +30,11 @@
                     >
                     </theater-list>
                 </div>
+
+                <div id="step2" v-if="step == 2">
+                    <seat-list>
+                    </seat-list>
+                </div>
             </div>
 
             <div class="col-md-3">
@@ -55,12 +60,14 @@ import movies from '../movies.json'
 import DaySelector from '../components/booking/daySelector.vue'
 import TheaterList from '../components/booking/theaterList.vue'
 import StepBar from '../components/booking/stepBar.vue'
+import SeatList from '../components/booking/seatList.vue'
 
 export default {
     components:{
         DaySelector,
         TheaterList,
-        StepBar
+        StepBar,
+        SeatList
     },
     data: () => {
         return {
