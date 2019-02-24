@@ -7,6 +7,7 @@
 
 <script>
 export default {
+    props:["seat"],
     data: () => {
         return {
             clicked: false
@@ -15,6 +16,12 @@ export default {
     methods:{
         toggleSeat(){
             this.clicked = !this.clicked
+            
+            var data = {
+                selected: this.clicked,
+                seat: this.seat
+            }
+            this.$emit('toggle-seat', data)
         }
     }
 }

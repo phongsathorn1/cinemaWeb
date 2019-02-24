@@ -32,8 +32,14 @@
                 </div>
 
                 <div id="step2" v-if="step == 2">
-                    <seat-list>
+                    <seat-list
+                    @toggle-seat="updateSeats($event)"
+                    >
                     </seat-list>
+                </div>
+
+                <div id="step3" v-if="step == 3">
+                    <payment></payment>
                 </div>
             </div>
 
@@ -47,8 +53,11 @@
                     <p v-if="booking.location"><b>สถานที่</b> {{booking.location}}</p>
                     <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
                     <hr>
-                    <p v-if="bookingSeat"><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
-                    <p v-if="bookingSeat"><b>ราคา</b> {{bookingSeat.total}}</p>
+                    <template v-if="bookingSeat">
+                        <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
+                        <p><b>ราคา</b> {{bookingSeat.total}}</p>
+                        <button @click="payment">ดำเนินการต่อ</button>
+                    </template>
                 </div>
             </div>
         </div>
@@ -61,13 +70,15 @@ import DaySelector from '../components/booking/daySelector.vue'
 import TheaterList from '../components/booking/theaterList.vue'
 import StepBar from '../components/booking/stepBar.vue'
 import SeatList from '../components/booking/seatList.vue'
+import Payment from '../components/booking/payment.vue'
 
 export default {
     components:{
         DaySelector,
         TheaterList,
         StepBar,
-        SeatList
+        SeatList,
+        Payment
     },
     data: () => {
         return {
@@ -77,16 +88,7 @@ export default {
                 theater: "โรงภาพยนตร์ 3",
                 location: "เอ็มพรีเว่ ซีเนคลับ เอ็มโพเรียม",
                 round: null,
-                seats: [
-                    {
-                        seat: "A5",
-                        price: 20
-                    },
-                    {
-                        seat: "A6",
-                        price: 30
-                    }
-                ]
+                seats: []
             },
             selected: null,
             step: 1
@@ -116,6 +118,22 @@ export default {
             this.booking.round = event.round
 
             this.step++
+        },
+        updateSeats(event){
+            if(event.selected){
+                this.booking.seats.push({
+                    seat: event.seat,
+                    price: 30
+                })
+            }else{
+                let index = this.booking.seats.map(x => x.seat).indexOf(event.seat);
+                if(index > -1){
+                    this.booking.seats.splice(index, 1)
+                }
+            }
+        },
+        payment(){
+            this.step++
         }
     },
     computed:{
@@ -123,7 +141,7 @@ export default {
             var seatText = "";
             var price = 0;
 
-            if(this.booking.seats){
+            if(this.booking.seats.length > 0){
                 price += this.booking.seats.reduce((total, x) => total+x.price, 0)
                 console.log(price)
                 seatText = this.booking.seats.map(x => x.seat).join(", ")

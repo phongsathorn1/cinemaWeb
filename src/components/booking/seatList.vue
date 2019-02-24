@@ -21,7 +21,11 @@
                     <tr v-for="n in 8" :key="n">
                         <td>{{ rows[n-1] }}</td>
                         <td v-for="m in 17" :key="m">
-                            <seat-button></seat-button>
+                            <seat-button 
+                            :seat="rows[n-1]+m"
+                            @toggle-seat="toggleSeat($event)"
+                            >
+                            </seat-button>
                         </td>
                         <td>{{ rows[n-1] }}</td>
                     </tr>
@@ -41,6 +45,11 @@ export default {
     data:() => {
         return {
             rows: ["A", "B", "C", "D", "E", "F", "G", "H"]
+        }
+    },
+    methods:{
+        toggleSeat(event){
+            this.$emit('toggle-seat', event)
         }
     }
 }
