@@ -5,6 +5,8 @@ import Homepage from './pages/home.vue'
 import Loginpage from './pages/login.vue'
 import Registerpage from './pages/register.vue'
 import RegisteredSuccess from './pages/registeredSuccess.vue'
+import MovieDetail from './pages/movieDetail.vue'
+import Booking from './pages/booking.vue'
 
 Vue.use(VueRouter);
 
@@ -24,6 +26,14 @@ const routes = [
     {
         path: '/register/success',
         component: RegisteredSuccess
+    },
+    {
+        path: '/movie/:id',
+        component: MovieDetail
+    },
+    {
+        path: '/movie/:id/booking',
+        component: Booking
     }
 ]
 
