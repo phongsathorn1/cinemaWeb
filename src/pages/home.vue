@@ -6,12 +6,14 @@
         <h1>ภาพยนต์ใหม่ที่กำลังฉาย</h1>
         <div class="flex-wrapper">
           <div class="movie-card-item" v-for="movie in movies" :key="movie.id">
-            <movie-card 
-              :title="movie.name" 
-              :date="movie.avaliable_date" 
-              :image="movie.image_url"
-            >
-            </movie-card>
+            <router-link :to="'/movie/'+movie.id">
+              <movie-card 
+                :title="movie.name.th" 
+                :date="movie.avaliable_date" 
+                :image="movie.image_url"
+              >
+              </movie-card>
+            </router-link>
           </div>
         </div>
       </div>
@@ -22,6 +24,7 @@
 <script>
 import Billboard from "../components/billboard.vue";
 import MovieCard from "../components/MovieCard.vue";
+import movies from "../movies.json";
 
 export default {
   components: {
@@ -30,22 +33,7 @@ export default {
   },
   data: () => {
     return {
-      movies: [
-        {
-          id: 1,
-          name: "เฟรนโซน ระวังสิ้นสุดทางเพื่อน",
-          avaliable_date: Date.now(),
-          image_url:
-            "https://lh3.googleusercontent.com/hGX4-13iqHM1Kx_nyj67AtCsFXAjJyS0wxoEcJynOs99BUJXQWLIUQFcsje3jdMW75wtrJU2ktywEF3gxoKe"
-        },
-        {
-          id: 2,
-          name: "กัปตัน มาร์เวล",
-          avaliable_date: Date.now(),
-          image_url:
-            "https://lh3.googleusercontent.com/3Ost-FvXYMVAs84hLxJAn9qqIh9s_YCC8oCySCuOWIJWIu8zPIuKYJ9FG_FEFBqKZoQnguVOuNAkg9kArkPM"
-        }
-      ]
+      movies: movies.movies
     };
   }
 };

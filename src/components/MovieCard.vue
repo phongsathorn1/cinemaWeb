@@ -5,7 +5,7 @@
     </div>
     <div class="movie-card-info">
       <h2>{{title}}</h2>
-      <span>วันที่เข้าฉาย {{stringDate}}</span>
+      <span>วันที่เข้าฉาย {{date}}</span>
     </div>
   </div>
 </template>
