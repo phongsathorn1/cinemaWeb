@@ -26,7 +26,7 @@
           placeholder="Password"
         >
       </div>
-      <button type="submit" class="btn btn-primary">Sign In</button>
+      <button type="submit" class="btn btn-primary" @click="login">Sign In</button>
     </form>
   </div>
 </template>
@@ -38,6 +38,21 @@ export default {
         email: "",
         password: ""
     }
+  },
+  methods:{
+      login(){
+          var accounts = JSON.parse(localStorage.getItem("registered"))
+          
+          accounts.forEach(account => {
+              if(account.email.toLowerCase() == this.email.toLowerCase() && 
+                account.password.toLowerCase() == this.password.toLowerCase()){
+                    localStorage.setItem("account", JSON.stringify(account))
+                    this.$router.push('/')
+              }
+          });
+      }
+
+
   }
 };
 </script>
