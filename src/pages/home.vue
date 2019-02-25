@@ -42,11 +42,6 @@ export default {
 <style lang="scss">
 $secondary-bg-color: #2b2b2b;
 
-// .container-fluid {
-//   padding-left: 30px;
-//   padding-right: 30px;
-// }
-
 #new-movie-section {
   padding: 50px 0px;
   background-color: $secondary-bg-color;
@@ -59,5 +54,10 @@ $secondary-bg-color: #2b2b2b;
 
 .movie-card-item {
   width: 20%;
+}
+
+.movie-card-item a{
+  text-decoration: none;
+  color: #ffffff;
 }
 </style>

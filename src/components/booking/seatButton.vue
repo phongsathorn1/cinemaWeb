@@ -1,13 +1,14 @@
 <template>
     <div class="seat-button" :class="{active: clicked}" @click="toggleSeat">
         <div class="seat-status-icon">
+            {{seatNum}}
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props:["seat"],
+    props:["seat", "seatNum"],
     data: () => {
         return {
             clicked: false
@@ -29,17 +30,23 @@ export default {
 
 <style lang="scss">
 .seat-button{
-    height: 30px;
+    height: 41px;
     width: 100%;
+    margin: 5px 0px;
+    padding: 5px;
 }
 
 .seat-button .seat-status-icon{
-    background: #FFF;
     height: 100%;
-    margin: 20px 5px;
+    border-radius: 100%;
+    border: 2px solid #949494;
+    line-height: 25px;
 }
 
 .seat-button.active .seat-status-icon{
-    background: #FF0000;
+    border-color: #55b776;
+    background: #55b776;
+    color: #000;
+    font-weight: bold;
 }
 </style>

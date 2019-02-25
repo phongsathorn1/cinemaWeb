@@ -1,21 +1,15 @@
 <template>
     <div class="payment-methods">
         <h3>เลือกช่องทางการชำระเงิน</h3>
-        <ul id="payment-methods" class="nav nav-pills nav-fill payment-methods-list">
-            <li class="nav-item">
-                <a class="nav-link active" href="#" @click="select('cash')">
-                    เงินสด
-                </a>
+        <ul id="payment-methods" class="list-group list-group-horizontal payment-methods-list">
+            <li class="list-group-item" @click="select('cash')">
+                เงินสด
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" @click="select('credit-card')">
-                    บัตรเครดิต / บัตรเดบิต
-                </a>
+            <li class="list-group-item" @click="select('credit-card')">
+                บัตรเครดิต / บัตรเดบิต
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" @click="select('promptpay')">
-                    พร้อมเพย์ (PromptPay)
-                </a>
+            <li class="list-group-item" @click="select('promptpay')">
+                พร้อมเพย์ (PromptPay)
             </li>
         </ul>
 
@@ -78,5 +72,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.list-group-item{
+    background-color: #3e3e3e;
+}
 </style>

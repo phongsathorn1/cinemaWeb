@@ -56,7 +56,7 @@
                         <template v-if="bookingSeat">
                             <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
                             <p><b>ราคา</b> {{bookingSeat.total}}</p>
-                            <button @click="payment">ดำเนินการต่อ</button>
+                            <button class="btn btn-success" @click="payment">ดำเนินการต่อ</button>
                         </template>
                     </div>
                 </div>

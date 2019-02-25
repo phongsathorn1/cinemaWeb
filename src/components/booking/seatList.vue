@@ -19,15 +19,16 @@
                         </td>
                     </tr>
                     <tr v-for="n in 8" :key="n">
-                        <td>{{ rows[n-1] }}</td>
+                        <td class="row-id">{{ rows[n-1] }}</td>
                         <td v-for="m in 17" :key="m">
                             <seat-button 
                             :seat="rows[n-1]+m"
+                            :seat-num="m"
                             @toggle-seat="toggleSeat($event)"
                             >
                             </seat-button>
                         </td>
-                        <td>{{ rows[n-1] }}</td>
+                        <td class="row-id">{{ rows[n-1] }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -71,5 +72,10 @@ export default {
 .walkway.empty{
     width: 100%;
     height: 20px;
+}
+
+.row-id{
+    text-align: center;
+    vertical-align: middle;
 }
 </style>

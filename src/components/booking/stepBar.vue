@@ -28,15 +28,15 @@ export default {
     props: ["step"],
     data: () => {
         return {
-            step: 0
+            // stepBar: 0
         }
     },
-    created(){
-        this.step = step
-    },
+    // created(){
+    //     this.stepBar = this.step
+    // },
     methods:{
         selected(num){
-            if(this.step >= num){
+            if(this.step >= num && this.step < 4){
                 this.$emit('back', num)
             }
         }

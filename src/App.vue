@@ -4,14 +4,10 @@
     <div class="app-content">
       <router-view></router-view>
     </div>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
 <script>
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Navbar from './components/navbar.vue'
 
 export default {
@@ -19,15 +15,6 @@ export default {
     Navbar
   }
 }
-
-// import HelloWorld from './components/HelloWorld.vue'
-
-// export default {
-//   name: 'app',
-//   components: {
-//     HelloWorld
-//   }
-// }
 </script>
 
 <style lang="scss">
@@ -38,7 +25,7 @@ body{
   background-color: $primary-black;
   font-family: 'Athiti', sans-serif;
   color: #FFFFFF;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 
 .bg-dark{
@@ -58,7 +45,7 @@ h1{
 
 .card{
   background: $secondary-bg-color;
-  padding: 10px 20px;
+  padding: 20px;
 }
 
 hr{

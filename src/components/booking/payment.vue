@@ -2,6 +2,7 @@
     <div class="booking-payment">
         <div class="card">
             <h1>ยืนยันการซื้อบัตรชมภาพยนตร์</h1>
+            <h2>ข้อมูลทั่วไป</h2>
             <div class="booking-account-info">
                 <h3>{{getName()}}</h3>
                 <p><b>อีเมล์</b> {{account.email}}</p>
@@ -53,5 +54,12 @@ export default {
 </script>
 
 <style lang="scss">
+.booking-payment h1{
+    margin-bottom: 20px;
+}
 
+.booking-payment h2{
+    font-size: 20px;
+    font-weight: bold;
+}
 </style>
