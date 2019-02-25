@@ -44,7 +44,7 @@ export default {
 .day-selector-item{
     text-align: center;
     cursor: pointer;
-    border: 1px solid #717171;
+    border: 2px solid #717171;
     border-radius: 3px;
     padding: 10px;
 }

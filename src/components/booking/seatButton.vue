@@ -41,6 +41,7 @@ export default {
     border-radius: 100%;
     border: 2px solid #949494;
     line-height: 25px;
+    cursor: pointer;
 }
 
 .seat-button.active .seat-status-icon{
