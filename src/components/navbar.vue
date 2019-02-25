@@ -1,7 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Cinema</a>
-
+  <router-link class="navbar-brand" :to="'/'">Cinema</router-link>
 </nav>
 </template>
 

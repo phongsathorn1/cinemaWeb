@@ -2,11 +2,11 @@
     <div class="step-bar">
         <div class="card">
             <ul class="desktop-step-bar">
-                <li class="step-item" :class="{active: step == 1}">
+                <li class="step-item" :class="{active: step == 1}" @click="selected(1)">
                     <div class="no">1</div>
                     <div class="step-name">เลือกรอบฉาย</div>
                 </li>
-                <li class="step-item" :class="{active: step == 2}">
+                <li class="step-item" :class="{active: step == 2}" @click="selected(2)">
                     <div class="no">2</div>
                     <div class="step-name">เลือกที่นั่ง</div>
                 </li>
@@ -25,13 +25,28 @@
 
 <script>
 export default {
-    props: ["step"]
+    props: ["step"],
+    data: () => {
+        return {
+            step: 0
+        }
+    },
+    created(){
+        this.step = step
+    },
+    methods:{
+        selected(num){
+            if(this.step >= num){
+                this.$emit('back', num)
+            }
+        }
+    }
 }
 </script>
 
 <style lang="scss">
 .step-bar{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .desktop-step-bar{

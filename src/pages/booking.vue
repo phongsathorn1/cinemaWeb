@@ -16,48 +16,66 @@
             </div>
         </div>
         <div class="row movie-booking-section">
-            <div class="col-md-9">
-                <step-bar :step="step"></step-bar>
-                <div id="step1" v-if="step == 1">
-                    <day-selector 
-                    :days="movie.avaliables"
-                    @selected-day="selectedDay($event)"
-                    >
-                    </day-selector>
-                    <theater-list
-                    :theaters="selected"
-                    @selected="selectedTheater($event)"
-                    >
-                    </theater-list>
+            <div class="col-md-12">
+                <step-bar :step="step" @back="gotoStep($event)"></step-bar>
+            </div>
+
+            <template v-if="step < 3">
+                <div class="col-md-9">
+                    <div id="step1" v-if="step == 1">
+                        <day-selector 
+                        :days="movie.avaliables"
+                        @selected-day="selectedDay($event)"
+                        >
+                        </day-selector>
+                        <theater-list
+                        :theaters="selected"
+                        @selected="selectedTheater($event)"
+                        >
+                        </theater-list>
+                    </div>
+
+                    <div id="step2" v-if="step == 2">
+                        <seat-list
+                        @toggle-seat="updateSeats($event)"
+                        >
+                        </seat-list>
+                    </div>
                 </div>
 
-                <div id="step2" v-if="step == 2">
-                    <seat-list
-                    @toggle-seat="updateSeats($event)"
-                    >
-                    </seat-list>
+                <div class="col-md-3">
+                    <div class="card movie-booking-check">
+                        <!-- <img :src="movie.image_url"> -->
+                        <h3>{{movie.name.th}}</h3>
+                        <p>{{movie.name.en}}</p>
+                        <hr>
+                        <p v-if="booking.theater"><b>โรงภาพยนตร์</b> {{booking.theater}}</p>
+                        <p v-if="booking.location"><b>สถานที่</b> {{booking.location}}</p>
+                        <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
+                        <hr>
+                        <template v-if="bookingSeat">
+                            <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
+                            <p><b>ราคา</b> {{bookingSeat.total}}</p>
+                            <button @click="payment">ดำเนินการต่อ</button>
+                        </template>
+                    </div>
                 </div>
+            </template>
 
-                <div id="step3" v-if="step == 3">
-                    <payment></payment>
+            <div class="col-md-12" v-if="step == 3">
+                <div id="step3">
+                    <payment 
+                    :account="account"
+                    :order="getOrder"
+                    @pay="pay"
+                    >
+                    </payment>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="card movie-booking-check">
-                    <!-- <img :src="movie.image_url"> -->
-                    <h3>{{movie.name.th}}</h3>
-                    <p>{{movie.name.en}}</p>
-                    <hr>
-                    <p v-if="booking.theater"><b>โรงภาพยนตร์</b> {{booking.theater}}</p>
-                    <p v-if="booking.location"><b>สถานที่</b> {{booking.location}}</p>
-                    <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
-                    <hr>
-                    <template v-if="bookingSeat">
-                        <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
-                        <p><b>ราคา</b> {{bookingSeat.total}}</p>
-                        <button @click="payment">ดำเนินการต่อ</button>
-                    </template>
+            <div class="col-md-12" v-if="step == 4">
+                <div id="step4">
+                    <success></success>
                 </div>
             </div>
         </div>
@@ -71,6 +89,7 @@ import TheaterList from '../components/booking/theaterList.vue'
 import StepBar from '../components/booking/stepBar.vue'
 import SeatList from '../components/booking/seatList.vue'
 import Payment from '../components/booking/payment.vue'
+import Success from '../components/booking/success.vue'
 
 export default {
     components:{
@@ -78,7 +97,8 @@ export default {
         TheaterList,
         StepBar,
         SeatList,
-        Payment
+        Payment,
+        Success
     },
     data: () => {
         return {
@@ -96,9 +116,12 @@ export default {
     },
     created(){
         this.movie = this.getMovie()
-        console.log(this.movie)
+        this.getAccount()
     },
     methods:{
+        getAccount(){
+            this.account = JSON.parse(localStorage.getItem('account'))
+        },
         getMovie(){
             var selectedMovie = null
             movies.movies.forEach(movie => {
@@ -134,6 +157,12 @@ export default {
         },
         payment(){
             this.step++
+        },
+        pay(){
+            this.step++
+        },
+        gotoStep(num){
+            this.step = num
         }
     },
     computed:{
@@ -143,7 +172,6 @@ export default {
 
             if(this.booking.seats.length > 0){
                 price += this.booking.seats.reduce((total, x) => total+x.price, 0)
-                console.log(price)
                 seatText = this.booking.seats.map(x => x.seat).join(", ")
 
                 return {
@@ -153,6 +181,12 @@ export default {
             }
 
             return null
+        },
+        getOrder(){
+            return {
+                movie: this.movie,
+                booking: this.booking
+            }
         }
     }
 }

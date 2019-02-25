@@ -20,11 +20,9 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.id)
         this.movies.forEach(movie => {
             if(movie.id == this.$route.params.id){
                 this.movie = movie
-                console.log(this.movie)
             }
         });
     }

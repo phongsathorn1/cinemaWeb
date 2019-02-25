@@ -1,14 +1,14 @@
 <template>
     <div class="booking-theater-list">
         <template v-if="theaters">
-            <div class="booking-theater-item" v-for="location in theaters.locations">
+            <div class="booking-theater-item" v-for="location in theaters.locations" :key="location.name">
                 <div class="booking-theater-location">
                     {{location.name}}
                 </div>
-                <div class="booking-theater-name" v-for="theater in location.theaters">
+                <div class="booking-theater-name" v-for="theater in location.theaters" :key="theater.name">
                     <h3>{{theater.name}}</h3>
                     <div class="booking-theater-times">
-                        <button v-for="time in theater.times" @click="selected(location, theater, time)">{{time}}</button>
+                        <button v-for="time in theater.times" @click="selected(location, theater, time)" :key="time">{{time}}</button>
                     </div>
                 </div>
             </div>

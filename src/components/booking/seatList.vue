@@ -39,6 +39,7 @@
 import SeatButton from './seatButton.vue'
 
 export default {
+    props: ["selected"],
     components:{
         SeatButton
     },
