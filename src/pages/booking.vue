@@ -57,6 +57,17 @@
                         <template v-if="bookingSeat">
                             <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
                             <p><b>ราคา</b> {{bookingSeat.total}}</p>
+
+                            <seat-type 
+                            v-for="seat in booking.seats" 
+                            :key="seat.seat" 
+                            :seat="seat.seat"
+                            :type="seat.type"
+                            :showWarn="showWarn"
+                            @change="changeType($event, seat.seat)"
+                            >
+                            </seat-type>
+
                             <button class="btn btn-success" @click="payment">ดำเนินการต่อ</button>
                         </template>
                     </div>
@@ -94,6 +105,7 @@ import StepBar from '../components/booking/stepBar.vue'
 import SeatList from '../components/booking/seatList.vue'
 import Payment from '../components/booking/payment.vue'
 import Success from '../components/booking/success.vue'
+import SeatType from '../components/booking/seatType.vue'
 import Helper from '../helper.js'
 
 export default {
@@ -103,7 +115,8 @@ export default {
         StepBar,
         SeatList,
         Payment,
-        Success
+        Success,
+        SeatType
     },
     data: () => {
         return {
@@ -117,7 +130,8 @@ export default {
                 id: null
             },
             selected: null,
-            step: 1
+            step: 1,
+            showWarn: false
         }
     },
     created(){
@@ -152,16 +166,35 @@ export default {
             if(event.selected){
                 this.booking.seats.push({
                     seat: event.seat,
-                    price: 30
+                    price: 30,
+                    type: "none"
                 })
             }else{
-                let index = this.booking.seats.map(x => x.seat).indexOf(event.seat);
+                let index = this.booking.seats.map(x => x.seat).indexOf(event.seat)
                 if(index > -1){
                     this.booking.seats.splice(index, 1)
                 }
             }
         },
+        changeType(event, seat){
+            let index = this.booking.seats.map(x => x.seat).indexOf(seat)
+            this.booking.seats[index].type = event
+        },
         payment(){
+            let pass = true
+            this.booking.seats.forEach(seat => {
+                if(seat.type == "none"){
+                    this.showWarn = true
+                    pass = false
+                    return
+                }
+            })
+
+            if(!pass){
+                return
+            }
+
+            this.showWarn = false
             this.step++
         },
         pay(){

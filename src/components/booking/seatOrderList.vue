@@ -8,7 +8,7 @@
           </div>
           <div class="col-10">
             <div class="booking-order-header">{{seat.seat}}</div>
-            <div class="booking-order-detail">ประเภท: เด็กเล็ก
+            <div class="booking-order-detail">ประเภท: {{getTypeName(seat.type)}}
               <br>
               <div class="booking-item-price">ราคา: {{seat.price}} บาท</div>
             </div>
@@ -21,7 +21,19 @@
 
 <script>
 export default {
-    props: ["booking"]
+    props: ["booking"],
+    methods:{
+      getTypeName(seatType){
+        switch(seatType){
+          case "adult":
+            return "ผู้ใหญ่"
+          case "child":
+            return "เด็ก"
+          default:
+            return "ไม่ได้ระบุ"
+        }
+      }
+    }
 }
 </script>
 
