@@ -13,8 +13,12 @@
             </li>
         </ul>
 
+        <div id="cash" class="payment-dialog" v-if="method == 'cash'">
+            คุณสามารถชำระเงินได้ที่หน้าเคาท์เตอร์ โดยนำ QR Code ที่ท่านได้รับหลังจากกด "ชำระเงิน"
+        </div>
+
         <div id="creditcard" class="payment-dialog" v-if="method == 'credit-card'">
-            กรุณากรอกรายละเอียด
+            <p class="payment-help">กรุณากรอกรายละเอียด</p>
             <form>
                 <div class="form-group">
                     <label for="name_on_card">ชื่อผู้ถือบัตร</label>
@@ -41,8 +45,12 @@
             </form>
         </div>
 
-        <div id="creditcard" class="payment-dialog" v-if="method == 'promptpay'">
-            พร้อมเพย์
+        <div id="promptpay" class="payment-dialog" v-if="method == 'promptpay'">
+            QR Code
+        </div>
+
+        <div id="creditcard" class="payment-dialog" v-if="method == null">
+            กรุณาเลือกวิธีการชำระเงิน
         </div>
     </div>
 </template>
@@ -72,7 +80,37 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
 .list-group-item{
-    background-color: #3e3e3e;
+    background-color: $third-color;
+}
+
+.payment-methods-list{
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-dialog{
+    background-color: $third-color;
+    // border: 1px solid $border-color;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.payment-help{
+    font-size: 20px;
+}
+
+.payment-methods{
+    margin-top: 20px;
+}
+
+.payment-methods-list .list-group-item{
+    cursor: pointer;
+}
+
+.payment-methods-list .list-group-item:hover{
+    background-color: $third-color;
 }
 </style>

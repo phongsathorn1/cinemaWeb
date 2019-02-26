@@ -18,27 +18,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="booking-purchest-order">
-                        <ul class="booking-order">
-                            <li v-for="seat in order.booking.seats" :key="seat.seat">
-                                <div class="booking-order-item">
-                                    <div class="row">
-                                        <div class="col-2">
-                                        </div>
-                                        <div class="col-10">
-                                            <div class="booking-order-header">
-                                                {{seat.seat}}
-                                            </div>
-                                            <div class="booking-order-detail">
-                                                ประเภท: เด็กเล็ก<br>
-                                                <div class="booking-item-price">
-                                                    ราคา: {{seat.price}} บาท
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <seat-order-list :booking="order.booking"></seat-order-list>
                         <div class="booking-order-total">
                             รวม {{this.total}} บาท
                         </div>
@@ -50,8 +30,13 @@
 </template>
 
 <script>
+import SeatOrderList from '../booking/seatOrderList.vue'
+
 export default {
     props: ["order"],
+    components:{
+        SeatOrderList
+    },
     data: () => {
         return {
             total: 0
@@ -69,6 +54,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
+.seat-icon{
+    background-image: url('../../assets/seat.svg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    height: 100%;
+}
+
 .booking-purchest-container{
     padding: 20px;
     background: #3e3e3e;
@@ -82,28 +76,8 @@ export default {
     margin-left: 20px;
 }
 
-.booking-order{
+.booking-purchest-order{
     border-left: 1px solid #636363;
-    list-style: none;
-    padding: 0px 20px;
-}
-
-.booking-order .booking-order-item{
-    padding: 10px;
-    border-bottom: 1px solid #636363;
-}
-
-.booking-order .booking-order-header{
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.booking-order .booking-item-price{
-    border: 1px solid #55b776;
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 10px;
-    margin-top: 10px;
 }
 
 </style>

@@ -26,14 +26,6 @@
 <script>
 export default {
     props: ["step"],
-    data: () => {
-        return {
-            // stepBar: 0
-        }
-    },
-    // created(){
-    //     this.stepBar = this.step
-    // },
     methods:{
         selected(num){
             if(this.step >= num && this.step < 4){
@@ -45,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
 .step-bar{
     margin-bottom: 20px;
 }
@@ -66,7 +60,7 @@ export default {
 
 .desktop-step-bar .step-item .no{
     color: #c6c7c7;
-    border: 2px solid #55b776;
+    border: 2px solid $stepbar-accent-color;
     font-size: 16px;
     font-weight: 600;
     text-align: center;
@@ -78,22 +72,31 @@ export default {
     position: relative;
     z-index: 2;
     background: #2b2b2b;
+    cursor: pointer;
+}
+
+.desktop-step-bar .step-item .no:hover{
+    background: $stepbar-accent-color;
+    color: #000000;
 }
 
 .desktop-step-bar .step-item.active .no{
-    border: 2px solid #55b776;
+    border: 2px solid $stepbar-accent-color;
+    background: $stepbar-accent-color;
+    color: #000000;
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.85);
 }
 
 .desktop-step-bar .step-item:before{
     width: 30px;
     height: 30px;
     line-height: 27px;
-    border: 2px solid #55b776;
+    border: 2px solid $stepbar-accent-color;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
     border-radius: 50%;
-    background-color: #55b776;
+    background-color: $stepbar-accent-color;
 }
 
 .desktop-step-bar .step-item:after{
@@ -101,7 +104,7 @@ export default {
     height: 2px;
     content: '';
     position: absolute;
-    background-color: #55b776;
+    background-color: $stepbar-accent-color;
     top: 15px;
     left: -50%;
     z-index: 1;
@@ -112,15 +115,21 @@ export default {
 }
 
 .desktop-step-bar .step-item.active:before{
-    border-color: #55b776;
+    border-color: $stepbar-accent-color;
 }
 
 .desktop-step-bar .step-item.active ~ .step-item::after {
-    background-color: #ffffff;
+    background-color: $stepbar-color;
 }
 
 .desktop-step-bar .step-item.active ~ .step-item .no{
-    border: 2px solid #ffffff;
+    border: 2px solid $stepbar-color;
+    cursor: default;
+}
+
+.desktop-step-bar .step-item.active ~ .step-item .no:hover{
+    background: #2b2b2b;
+    color: #c6c7c7;
 }
 
 </style>

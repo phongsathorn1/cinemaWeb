@@ -41,15 +41,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
 .day-selector-item{
     text-align: center;
     cursor: pointer;
-    border: 2px solid #717171;
+    border: 2px solid $border-color;
     border-radius: 3px;
     padding: 10px;
 }
 
 .day-selector-item.active{
-    border-color: #55b776;
+    border-color: $accent-color;
 }
 </style>

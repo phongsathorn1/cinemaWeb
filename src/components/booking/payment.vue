@@ -12,7 +12,7 @@
 
             <select-methods></select-methods>
 
-            <button @click="pay">ชำระเงิน <span v-if="total">({{total}} บาท)</span></button>
+            <button class="btn btn-success btn-payment-confirm" @click="pay">ชำระเงิน <span v-if="total">({{total}} บาท)</span></button>
         </div>
     </div>
 </template>
@@ -62,4 +62,9 @@ export default {
     font-size: 20px;
     font-weight: bold;
 }
+
+.btn-payment-confirm{
+    margin-top: 20px;
+}
+
 </style>

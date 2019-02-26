@@ -76,7 +76,10 @@
 
             <div class="col-md-12" v-if="step == 4">
                 <div id="step4">
-                    <success></success>
+                    <success
+                    :order="getOrder"
+                    >
+                    </success>
                 </div>
             </div>
         </div>
@@ -160,6 +163,40 @@ export default {
             this.step++
         },
         pay(){
+            if(localStorage.getItem("purchests") == null){
+                localStorage.setItem("purchests", JSON.stringify([{
+                    account: this.account,
+                    purchests: [{
+                        booking: this.booking,
+                        movie: this.movie
+                    }]
+                }]))
+            }else{
+                let purchests = JSON.parse(localStorage.getItem("purchests"))
+                let foundAccount = false
+
+                purchests.forEach(purchest => {
+                    if(purchest.account.email == this.account.email){
+                        purchest.purchests.push({
+                           booking: this.booking,
+                           movie: this.movie
+                        })
+                        foundAccount = true
+                    }
+                })
+
+                if(!foundAccount){
+                    purchests.push({
+                        account: this.account,
+                        purchests: [{
+                            booking: this.booking,
+                            movie: this.movie
+                        }]
+                    })
+                }
+
+                localStorage.setItem("purchests", JSON.stringify(purchests))
+            }
             this.step++
         },
         gotoStep(num){

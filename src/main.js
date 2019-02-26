@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
 import router from './routes.js'
 
-Vue.config.productionTip = false
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+Vue.config.productionTip = false
 Vue.use(VueRouter)
-// Vue.use(BootstrapVue)
+
+library.add(faMapMarkerAlt)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
   router,
