@@ -94,6 +94,7 @@ import StepBar from '../components/booking/stepBar.vue'
 import SeatList from '../components/booking/seatList.vue'
 import Payment from '../components/booking/payment.vue'
 import Success from '../components/booking/success.vue'
+import Helper from '../helper.js'
 
 export default {
     components:{
@@ -124,7 +125,7 @@ export default {
     },
     methods:{
         getAccount(){
-            this.account = JSON.parse(localStorage.getItem('account'))
+            this.account = Helper.getAccount()
         },
         getMovie(){
             var selectedMovie = null
