@@ -48,6 +48,7 @@ export default {
                 account.password.toLowerCase() == this.password.toLowerCase()){
                     localStorage.setItem("account", JSON.stringify(account))
                     this.$router.push('/')
+                    location.reload()
               }
           });
       }
