@@ -17,6 +17,12 @@
                     <p>รวมราคาทั้งหมด {{getTotal()}} บาท</p>
                 </div>
             </div>
+            <div v-if="enablePrint || enableCancel" class="row">
+                <div class="col-md-12 d-flex justify-content-end booking-ticket-control">
+                    <button v-if="enablePrint" class="btn btn-info" @click="print">พิมพ์บัตรชมภาพยนตร์</button>
+                    <button v-if="enableCancel" class="btn btn-light" @click="cancel">ยกเลิกออเดอร์</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -26,7 +32,18 @@ import SeatOrderList from './seatOrderList.vue'
 import moment from 'moment'
 
 export default {
-    props: ["order"],
+    props: {
+        order: Object,
+        id: Number,
+        enablePrint:{
+            type: Boolean,
+            default: false
+        },
+        enableCancel:{
+            type: Boolean,
+            default: false
+        }
+    },
     components:{
         SeatOrderList
     },
@@ -42,6 +59,13 @@ export default {
 
             let date = moment(dateStr, "DD-MM-YYYY")
             return date.day()+" "+months[date.month()]+" พ.ศ. "+(date.year()+543)
+        },
+        print(){
+            this.$router.push('/order/'+this.id+'/print')
+            this.$emit("print")
+        },
+        cancel(){
+            this.$emit("cancel")
         }
     }
 }
@@ -50,5 +74,14 @@ export default {
 <style lang="scss">
 .booking-ticket img{
     width: 100%;
+}
+
+.booking-ticket-control .btn{
+    margin-left: 10px;
+}
+
+.booking-ticket-control .btn:first-child{
+    margin-left: 0px;
+    text-align: right;
 }
 </style>

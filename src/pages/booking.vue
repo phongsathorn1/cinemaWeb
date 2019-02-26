@@ -113,7 +113,8 @@ export default {
                 theater: "โรงภาพยนตร์ 3",
                 location: "เอ็มพรีเว่ ซีเนคลับ เอ็มโพเรียม",
                 round: null,
-                seats: []
+                seats: [],
+                id: null
             },
             selected: null,
             step: 1
@@ -168,19 +169,25 @@ export default {
                 localStorage.setItem("purchests", JSON.stringify([{
                     account: this.account,
                     purchests: [{
+                        id: 1,
                         booking: this.booking,
                         movie: this.movie
                     }]
                 }]))
+                localStorage.setItem("orderIndex", 1)
             }else{
                 let purchests = JSON.parse(localStorage.getItem("purchests"))
+                let index = parseInt(localStorage.getItem("orderIndex"))
                 let foundAccount = false
+
+                index += 1
 
                 purchests.forEach(purchest => {
                     if(purchest.account.email == this.account.email){
                         purchest.purchests.push({
-                           booking: this.booking,
-                           movie: this.movie
+                            id: index,
+                            booking: this.booking,
+                            movie: this.movie
                         })
                         foundAccount = true
                     }
@@ -190,12 +197,16 @@ export default {
                     purchests.push({
                         account: this.account,
                         purchests: [{
+                            id: index,
                             booking: this.booking,
                             movie: this.movie
                         }]
                     })
                 }
 
+                this.booking.id = index
+
+                localStorage.setItem("orderIndex", index)
                 localStorage.setItem("purchests", JSON.stringify(purchests))
             }
             this.step++
