@@ -24,6 +24,7 @@
                             <seat-button 
                             :seat="rows[n-1]+m"
                             :seat-num="m"
+                            :selected="checkSeat(rows[n-1]+m)"
                             @toggle-seat="toggleSeat($event)"
                             >
                             </seat-button>
@@ -52,6 +53,9 @@ export default {
     methods:{
         toggleSeat(event){
             this.$emit('toggle-seat', event)
+        },
+        checkSeat(seat){
+            return this.selected.includes(seat)
         }
     }
 }

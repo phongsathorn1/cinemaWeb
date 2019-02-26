@@ -37,6 +37,7 @@
 
                     <div id="step2" v-if="step == 2">
                         <seat-list
+                        :selected="getSeats"
                         @toggle-seat="updateSeats($event)"
                         >
                         </seat-list>
@@ -187,6 +188,9 @@ export default {
                 movie: this.movie,
                 booking: this.booking
             }
+        },
+        getSeats(){
+            return this.booking.seats.map(x => x.seat)
         }
     }
 }

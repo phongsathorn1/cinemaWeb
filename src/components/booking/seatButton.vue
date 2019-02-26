@@ -8,11 +8,22 @@
 
 <script>
 export default {
-    props:["seat", "seatNum"],
+    props:{
+        seat: String,
+        seatNum: Number,
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    },
+    // props:["seat", "seatNum", "selected"],
     data: () => {
         return {
             clicked: false
         }
+    },
+    created(){
+        this.clicked = this.selected
     },
     methods:{
         toggleSeat(){
