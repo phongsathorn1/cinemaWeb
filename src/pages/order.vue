@@ -7,7 +7,7 @@
         :id="order.id" 
         :enableCancel="true"
         :enablePrint="true"
-        @print="print"
+        :key="order.id"
         @cancel="cancel(order.id)"
         >
         </show-ticket>
@@ -44,9 +44,6 @@ export default {
         }
     },
     methods:{
-        print(){
-            swal("Print")
-        },
         cancel(orderId){
             swal({
                 title: "ลบคำสั่งซื้อนี้",
