@@ -7,6 +7,7 @@ import Registerpage from './pages/register.vue'
 import RegisteredSuccess from './pages/registeredSuccess.vue'
 import MovieDetail from './pages/movieDetail.vue'
 import Booking from './pages/booking.vue'
+import Order from './pages/order.vue'
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,10 @@ const routes = [
     {
         path: '/movie/:id/booking',
         component: Booking
+    },
+    {
+        path: '/order',
+        component: Order
     }
 ]
 

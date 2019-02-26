@@ -18,12 +18,11 @@ export default {
 </script>
 
 <style lang="scss">
-$primary-black: #141414;
-$secondary-bg-color: #2b2b2b;
+@import 'style/main.scss';
 
 body{
   background-color: $primary-black;
-  font-family: 'Athiti', sans-serif;
+  font-family: $default-font;
   color: #FFFFFF;
   font-size: 0.9em;
 }
@@ -37,7 +36,7 @@ h1{
 }
 
 #app {
-  font-family: 'Athiti', sans-serif;
+  font-family: $default-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
@@ -49,6 +48,23 @@ h1{
 }
 
 hr{
-  border-color: #717171;
+  border-color: $border-color;
+}
+
+.form-control{
+  background: $secondary-bg-color;
+  border: none;
+  color: #FFFFFF;
+}
+
+.form-control::placeholder{
+  color: #8e8e8e;
+}
+
+.form-control:focus{
+  background-color: $secondary-bg-color;
+  box-shadow: 0 0 0 0.08rem #4CAF50;
+  border-color: $accent-color;
+  color: #FFFFFF;
 }
 </style>

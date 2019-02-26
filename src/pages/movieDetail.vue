@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-$secondary-bg-color: #2b2b2b;
+@import '../style/main.scss';
 
 .synopsis{
     background: #1f1f1f;
