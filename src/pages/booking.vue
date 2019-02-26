@@ -110,8 +110,8 @@ export default {
             movie: null,
             account: null,
             booking: {
-                theater: "โรงภาพยนตร์ 3",
-                location: "เอ็มพรีเว่ ซีเนคลับ เอ็มโพเรียม",
+                theater: null,
+                location: null,
                 round: null,
                 seats: [],
                 id: null
