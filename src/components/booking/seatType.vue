@@ -56,6 +56,12 @@ export default {
     background-image: url('../../assets/seat.svg');
     background-position-x: center;
     background-repeat: no-repeat;
-    // height: 200px;
+}
+
+@media print{
+    .seat-icon{
+        background-image: url('../../assets/seat-black.svg') !important;
+        -webkit-print-color-adjust: exact !important;
+    }
 }
 </style>

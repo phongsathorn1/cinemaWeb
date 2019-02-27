@@ -72,7 +72,7 @@ export default {
     display: inline-block;
     position: relative;
     z-index: 2;
-    background: #2b2b2b;
+    background: #000000;
     cursor: pointer;
 }
 
