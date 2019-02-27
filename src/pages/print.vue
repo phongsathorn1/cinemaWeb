@@ -43,5 +43,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+@media print{
+    #app{
+        color: #000000;
+    }
+}
 </style>
