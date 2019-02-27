@@ -4,6 +4,7 @@
     <div id="new-movie-section">
       <div class="container">
         <search-box
+        :theathers="getTheaters()"
         @search="search($event)"
         @theatersearch="theatherSearch($event)"
         ></search-box>
@@ -45,7 +46,25 @@ export default {
       theater: null
     };
   },
+  created(){
+    this.getTheaters()
+  },
   methods:{
+    getTheaters(){
+      let theaters = []
+      this.movies.forEach(movie => {
+        movie.avaliables.forEach(avaliable => {
+          avaliable.locations.forEach(location => {
+            theaters.push(location.name)
+          })
+        })
+      })
+      let temp = theaters.filter((value, index, self) => {
+        return self.indexOf(value) === index
+      })
+
+      return temp
+    },
     search(event){
       let keyword = event.toLowerCase()
       this.movies = movies.movies

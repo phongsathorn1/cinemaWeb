@@ -2,7 +2,7 @@
     <div class="step-bar">
         <div class="row">
             <div class="col-md-2 text-center">
-                <button class="btn btn-success" @click="$emit('back', step-1)">ย้อนกลับ</button>
+                <button class="btn btn-success" @click="$emit('back', step-1)" :disabled="step == 4">ย้อนกลับ</button>
             </div>
             <div class="col-md-10">
                 <div class="step-bar-container">

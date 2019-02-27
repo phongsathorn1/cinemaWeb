@@ -6,8 +6,9 @@
                     <div class="col-6">
                         <select class="select-theater" v-model="theather" @change="theaterSearch">
                             <option value="เลือกโรงภาพยนต์">เลือกโรงภาพยนต์</option>
-                            <option value="เซนทรัล ปิ่นเกล้า">เซนทรัล ปิ่นเกล้า</option>
-                            <option value="เซนทรัล เวิร์ล">เซนทรัล เวิร์ล</option>
+                            <option :value="t" v-for="t in theathers">{{t}}</option>
+                            <!-- <option value="เซนทรัล ปิ่นเกล้า">เซนทรัล ปิ่นเกล้า</option>
+                            <option value="เซนทรัล เวิร์ล">เซนทรัล เวิร์ล</option> -->
                         </select>
                     </div>
                     <div class="col-6">
@@ -23,6 +24,7 @@
 
 <script>
 export default {
+    props:["theathers"],
     data: () => {
         return {
             keyword: '',

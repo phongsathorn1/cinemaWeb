@@ -55,6 +55,7 @@
                         <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
                         <template v-if="bookingSeat && step > 1">
                             <hr>
+                            <p><b>จำนวนบัตร</b> {{booking.seats.length}}</p>
                             <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
                             <p><b>ราคา</b> {{bookingSeat.total}}</p>
 

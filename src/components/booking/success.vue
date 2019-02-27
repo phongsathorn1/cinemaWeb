@@ -8,7 +8,7 @@
             :id="order.booking.id"
             >
             </show-ticket>
-            <router-link :to="'/order'" tag="button" class="btn btn-light">ดูประวัติการสั่งซื้อ</router-link>
+            <router-link :to="'/order'" tag="button" class="btn btn-secondary">ดูประวัติการสั่งซื้อ</router-link>
         </div>
     </div>
 </template>
