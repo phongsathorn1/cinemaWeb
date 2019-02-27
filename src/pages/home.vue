@@ -4,7 +4,7 @@
     <div id="new-movie-section">
       <div class="container">
         <h1>ภาพยนต์ใหม่ที่กำลังฉาย</h1>
-        <div class="flex-wrapper">
+        <div class="flex-wrapper new-movie-container">
           <div class="movie-card-item" v-for="movie in movies" :key="movie.id">
             <router-link :to="'/movie/'+movie.id">
               <movie-card 
@@ -29,7 +29,7 @@ import movies from "../movies.json";
 export default {
   components: {
     Billboard,
-    MovieCard
+    MovieCard,
   },
   data: () => {
     return {
@@ -59,5 +59,9 @@ $secondary-bg-color: #2b2b2b;
 .movie-card-item a{
   text-decoration: none;
   color: #ffffff;
+}
+
+.new-movie-container{
+  margin: 20px 0px;
 }
 </style>

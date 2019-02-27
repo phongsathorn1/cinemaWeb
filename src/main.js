@@ -7,8 +7,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import VueCarousel from 'vue-carousel';
+
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(VueCarousel)
 
 library.add(faMapMarkerAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

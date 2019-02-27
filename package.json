@@ -16,6 +16,7 @@
     "moment": "^2.24.0",
     "sweetalert": "^2.1.2",
     "vue": "^2.6.6",
+    "vue-carousel": "^0.18.0-alpha",
     "vue-router": "^3.0.2"
   },
   "devDependencies": {
