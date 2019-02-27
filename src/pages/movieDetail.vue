@@ -2,13 +2,23 @@
     <div class="container">
         <div class="movie-top row">
             <div class="col-md-4">
-                <img :src="movie.image_url" width="200px">
+                <img :src="movie.image_url" class="movie-poster" width="200px">
             </div>
             <div class="col-md-8">
-                <h1>{{movie.name.th}}</h1>
-                <p class="subtitle">{{movie.name.en}}</p>
-                <p>วันที่เข้าฉาย: {{movie.avaliable_date}}</p>
-                <router-link :to="movie.id+'/booking'" tag="button" class="btn btn-primary">จองตั๋วภาพยนตร์</router-link>
+                <div class="movie-info">
+                    <h1 class="movie-title">{{movie.name.th}}</h1>
+                    <p class="subtitle">{{movie.name.en}}</p>
+                    <p>วันที่เข้าฉาย: {{movie.avaliable_date}}</p>
+                    <router-link :to="movie.id+'/booking'" tag="button" class="btn btn-primary">จองตั๋วภาพยนตร์</router-link>
+                </div>
+            </div>
+        </div>
+        <div class="movie-teaser row" v-if="movie.teaser">
+            <div class="col-md-12">
+                <!-- <h2>ตัวอย่างภาพยนตร์</h2> -->
+                <div class="embed-responsive embed-responsive-16by9 movie-teaser-video">
+                    <iframe class="embed-responsive-item" :src="movie.teaser" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
         <div class="synopsis row">
@@ -43,14 +53,31 @@ export default {
 <style lang="scss">
 @import '../style/main.scss';
 
-.synopsis{
+.synopsis,
+.movie-teaser{
     background: #1f1f1f;
-    padding: 20px;
+    padding: 50px 20px;
 }
 
+.movie-teaser-video{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.movie-teaser-video iframe{
+    margin: auto;
+    display: block;
+    width: 70%;
+    height: 100%;
+}
 #synopsis-detail{
     text-align: justify;
     white-space: pre-wrap;
+}
+
+.synopsis h2{
+    text-align: center;
 }
 
 .movie-top{
@@ -60,5 +87,18 @@ export default {
 
 .movie-top .subtitle{
     font-size: 20px;
+}
+
+.movie-top .movie-poster{
+    display: block;
+    margin: auto;
+}
+
+.movie-title{
+    font-size: 30px;
+}
+
+.movie-info{
+    padding: 20px 0px;
 }
 </style>
