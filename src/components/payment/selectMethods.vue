@@ -80,7 +80,7 @@ export default {
                 number: null,
                 expiration: null,
                 cvv: null
-            }
+            },
         }
     },
     methods:{

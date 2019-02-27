@@ -53,22 +53,24 @@
                         <p v-if="booking.theater"><b>โรงภาพยนตร์</b> {{booking.theater}}</p>
                         <p v-if="booking.location"><b>สถานที่</b> {{booking.location}}</p>
                         <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
-                        <template v-if="bookingSeat">
+                        <template v-if="bookingSeat && step > 1">
                             <hr>
                             <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
                             <p><b>ราคา</b> {{bookingSeat.total}}</p>
 
-                            <seat-type 
-                            v-for="seat in booking.seats" 
-                            :key="seat.seat" 
-                            :seat="seat.seat"
-                            :type="seat.type"
-                            :showWarn="showWarn"
-                            @change="changeType($event, seat.seat)"
-                            >
-                            </seat-type>
+                            <div class="select-seats">
+                                <seat-type 
+                                v-for="seat in booking.seats" 
+                                :key="seat.seat" 
+                                :seat="seat.seat"
+                                :type="seat.type"
+                                :showWarn="showWarn"
+                                @change="changeType($event, seat.seat)"
+                                >
+                                </seat-type>
+                            </div>
 
-                            <button class="btn btn-success" @click="payment">ดำเนินการต่อ</button>
+                            <button class="btn btn-success" style="width: 100%" @click="payment">ดำเนินการต่อ</button>
                         </template>
                     </div>
                 </div>
@@ -311,5 +313,9 @@ h1{
 
 .movie-booking-check p{
     margin-bottom: 0px;
+}
+
+.select-seats .seat-type-block:last-child{
+    border-bottom: none;
 }
 </style>

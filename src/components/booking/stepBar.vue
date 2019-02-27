@@ -1,25 +1,32 @@
 <template>
-    <div class="step-bar clearfix">
-        <!-- <div class="card"> -->
-            <ul class="desktop-step-bar">
-                <li class="step-item" :class="{active: step == 1}" @click="selected(1)">
-                    <div class="no">1</div>
-                    <div class="step-name">เลือกรอบฉาย</div>
-                </li>
-                <li class="step-item" :class="{active: step == 2}" @click="selected(2)">
-                    <div class="no">2</div>
-                    <div class="step-name">เลือกที่นั่ง</div>
-                </li>
-                <li class="step-item" :class="{active: step == 3}">
-                    <div class="no">3</div>
-                    <div class="step-name">ชำระเงิน</div>
-                </li>
-                <li class="step-item" :class="{active: step == 4}">
-                    <div class="no">4</div>
-                    <div class="step-name">เสร็จสิ้น</div>
-                </li>
-            </ul>
-        <!-- </div> -->
+    <div class="step-bar">
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <button class="btn btn-success" @click="$emit('back', step-1)">ย้อนกลับ</button>
+            </div>
+            <div class="col-md-10">
+                <div class="step-bar-container">
+                    <ul class="desktop-step-bar">
+                        <li class="step-item" :class="{active: step == 1}" @click="selected(1)">
+                            <div class="no">1</div>
+                            <div class="step-name">เลือกรอบฉาย</div>
+                        </li>
+                        <li class="step-item" :class="{active: step == 2}" @click="selected(2)">
+                            <div class="no">2</div>
+                            <div class="step-name">เลือกที่นั่ง</div>
+                        </li>
+                        <li class="step-item" :class="{active: step == 3}">
+                            <div class="no">3</div>
+                            <div class="step-name">ชำระเงิน</div>
+                        </li>
+                        <li class="step-item" :class="{active: step == 4}">
+                            <div class="no">4</div>
+                            <div class="step-name">เสร็จสิ้น</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

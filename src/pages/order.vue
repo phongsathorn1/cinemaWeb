@@ -46,8 +46,8 @@ export default {
     methods:{
         cancel(orderId){
             swal({
-                title: "ลบคำสั่งซื้อนี้",
-                text: "คุณต้องการลบคำสั่งซื้อนี้หรือไม่",
+                title: "ขอคืนเงินค่าบัตร",
+                text: "หากคุณต้องการคืนเงิน ระบบจะโอนกลับเข้าสู่บัญชีท่านภายใน 1 ปี",
                 icon: "warning",
                 buttons: {
                     cancel:{
@@ -55,22 +55,24 @@ export default {
                         visible: true,
                     },
                     confirm:{
-                        text: "ลบคำสั่งซื้อนี้"
+                        text: "คืนเงิน"
                     }
                 }
             }).then(button =>{
-                let orders = JSON.parse(localStorage.getItem("purchests"))
-                let index = this.orders.map(x => x.id).indexOf(orderId)
-                this.orders.splice(index, 1)
-    
-                orders.forEach(order => {
-                    if(order.account.email == this.account.email){
-                        console.log("deleted")
-                        order.purchests = this.orders
-                    }
-                })
-    
-                localStorage.setItem("purchests", JSON.stringify(orders))
+                if(button){
+                    let orders = JSON.parse(localStorage.getItem("purchests"))
+                    let index = this.orders.map(x => x.id).indexOf(orderId)
+                    this.orders.splice(index, 1)
+        
+                    orders.forEach(order => {
+                        if(order.account.email == this.account.email){
+                            console.log("deleted")
+                            order.purchests = this.orders
+                        }
+                    })
+        
+                    localStorage.setItem("purchests", JSON.stringify(orders))
+                }
             })
         }
     }

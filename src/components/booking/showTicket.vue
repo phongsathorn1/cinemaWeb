@@ -178,4 +178,10 @@ export default {
 .ticket-info-detail .ticket-qr{
     width: 80%;
 }
+
+.total-price{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $accent-color;
+}
 </style>
