@@ -38,6 +38,20 @@ export default {
         }
     },
     created(){
+        if(this.account == null){
+            swal({
+                title: "กรุณาเข้าสู่ระบบ",
+                text: "กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ",
+                icon: "info",
+                buttons: {
+                    confirm:{
+                        text: "เข้าสู่ระบบ"
+                    }
+                }
+            }).then(value => {
+                this.$router.push('/login')
+            })
+        }
         this.getTotal()
     },
     methods:{

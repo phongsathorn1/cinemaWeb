@@ -1,33 +1,39 @@
 <template>
   <div id="loginpage">
-    <form v-on:submit.prevent>
-      <div class="form-group">
-        <label for="email">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          v-model="email"
-        >
-        <small
-          id="emailHelp"
-          class="form-text text-muted"
-        >We'll never share your email with anyone else.</small>
+    <div class="container">
+      <div class="card">
+        <h1>เข้าสู่ระบบ</h1>
+        <form v-on:submit.prevent>
+          <div class="form-group">
+            <label for="email">อีเมล์</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="อีเมล์"
+              v-model="email"
+            >
+            <small
+              id="emailHelp"
+              class="form-text text-muted"
+            >We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="password">รหัสผ่าน</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              v-model="password"
+              placeholder="รหัสผ่าน"
+            >
+          </div>
+          <button type="submit" class="btn btn-primary" @click="login">เข้าสู่ระบบ</button>
+          <router-link tag="button" :to="'/register'" class="btn btn-light">สมัครสมาชิก</router-link>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          v-model="password"
-          placeholder="Password"
-        >
-      </div>
-      <button type="submit" class="btn btn-primary" @click="login">Sign In</button>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -59,4 +65,10 @@ export default {
 </script>
 
 <style lang="scss">
+.card .btn{
+  margin-right: 10px;
+}
+.card .btn:first-child{
+  margin-right: 0px;
+}
 </style>

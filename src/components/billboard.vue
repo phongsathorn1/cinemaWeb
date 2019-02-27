@@ -3,6 +3,10 @@
         <carousel 
         :perPage="1"
         :paginationActiveColor="'#55b776'"
+        :autoplay="true"
+        :autoplayTimeout="5000"
+        :autoplayHoverPause="true"
+        :loop="true"
         >
             <slide>
                 <div class="billboard-ticket-slide" v-bind:style="'background-image: url('+publicPath+'movies/images/slider/Cafe_Funiculi_Funicula-teaser2.jpg)'">

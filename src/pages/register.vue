@@ -1,63 +1,67 @@
 <template>
   <div id="registerpage">
-    <form v-on:submit.prevent>
-      <div class="form-group">
-        <label for="firstname">Firstname</label>
-        <input
-          type="text"
-          class="form-control"
-          id="firstname"
-          placeholder="Firstname"
-          v-model="firstname"
-        >
-      </div>
+    <div class="container">
+      <div class="card">
+        <form v-on:submit.prevent>
+          <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              placeholder="Firstname"
+              v-model="firstname"
+            >
+          </div>
 
-      <div class="form-group">
-        <label for="firstname">Lastname</label>
-        <input
-          type="text"
-          class="form-control"
-          id="lastname"
-          placeholder="Lastname"
-          v-model="lastname"
-        >
-      </div>
+          <div class="form-group">
+            <label for="firstname">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              placeholder="Lastname"
+              v-model="lastname"
+            >
+          </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Email"
-          v-model="email"
-        >
-      </div>
-      
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="Password"
-          v-model="password"
-        >
-      </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              v-model="email"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              v-model="password"
+            >
+          </div>
 
-      <div class="form-group">
-        <label for="passwordConfirmation">Password Confirmation</label>
-        <input
-          type="password"
-          class="form-control"
-          id="passwordConfirmation"
-          placeholder="Password Confirmation"
-          v-model="passwordConfirmation"
-        >
-      </div>
+          <div class="form-group">
+            <label for="passwordConfirmation">Password Confirmation</label>
+            <input
+              type="password"
+              class="form-control"
+              id="passwordConfirmation"
+              placeholder="Password Confirmation"
+              v-model="passwordConfirmation"
+            >
+          </div>
 
-      <button type="submit" class="btn btn-primary" @click="validation">Register</button>
-    </form>
+          <button type="submit" class="btn btn-primary" @click="validation">สมัครสมาชิก</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -103,4 +107,11 @@ export default {
 </script>
 
 <style lang="scss">
+.card .form-control{
+  background: #404040;
+}
+
+.card .form-control::placeholder{
+  color: #b9b9b9;
+}
 </style>

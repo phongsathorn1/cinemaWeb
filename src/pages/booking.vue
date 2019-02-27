@@ -107,6 +107,7 @@ import Payment from '../components/booking/payment.vue'
 import Success from '../components/booking/success.vue'
 import SeatType from '../components/booking/seatType.vue'
 import Helper from '../helper.js'
+import swal from 'sweetalert'
 
 export default {
     components:{

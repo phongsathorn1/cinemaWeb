@@ -5,14 +5,15 @@
     </div>
     <div class="movie-card-info">
       <h2>{{title}}</h2>
-      <span>วันที่เข้าฉาย {{date}}</span>
+      <p>{{enTitle}}</p>
+      <p>วันที่เข้าฉาย {{date}}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["title", "date", "image"],
+  props: ["title", "enTitle", "date", "image"],
   data: () => {
     return {
       cardStyle: {
