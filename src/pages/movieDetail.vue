@@ -15,7 +15,7 @@
         </div>
         <div class="movie-teaser row" v-if="movie.teaser">
             <div class="col-md-12">
-                <!-- <h2>ตัวอย่างภาพยนตร์</h2> -->
+                <h2>ตัวอย่างภาพยนตร์</h2>
                 <div class="embed-responsive embed-responsive-16by9 movie-teaser-video">
                     <iframe class="embed-responsive-item" :src="movie.teaser" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -56,13 +56,14 @@ export default {
 .synopsis,
 .movie-teaser{
     background: #1f1f1f;
-    padding: 50px 20px;
+    padding: 20px 20px;
 }
 
 .movie-teaser-video{
     text-align: center;
     width: 80%;
     margin: auto;
+    margin-top: 30px;
 }
 
 .movie-teaser-video iframe{
@@ -76,8 +77,10 @@ export default {
     white-space: pre-wrap;
 }
 
+.movie-teaser h2,
 .synopsis h2{
     text-align: center;
+    margin-top: 10px;
 }
 
 .movie-top{
