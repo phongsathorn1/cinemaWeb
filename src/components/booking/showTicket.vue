@@ -133,7 +133,11 @@ export default {
     margin-bottom: 0px;
 }
 
-.total-price{
+.booking-order-total{
+    border-top: 1px solid $border-color;
+}
+
+#order .total-price{
     text-align: center;
     font-weight: bold;
     display: block;

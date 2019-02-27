@@ -21,7 +21,7 @@
                         <seat-order-list :booking="order.booking"></seat-order-list>
                         <div class="booking-order-total">
                             <div class="row">
-                                <div class="col-3 booking-order-col">
+                                <div class="col-2 booking-order-col">
                                     ทั้งหมด<br>
                                     <span class="total-price">รวม</span>
                                 </div>
@@ -75,6 +75,12 @@ export default {
     background-repeat: no-repeat;
     background-position-y: center;
     height: 100%;
+}
+
+@media print{
+    .seat-icon{
+        background-image: url('../../assets/seat-black.svg');
+    }
 }
 
 .booking-purchest-container{

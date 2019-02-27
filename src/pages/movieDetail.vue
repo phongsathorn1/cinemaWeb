@@ -59,6 +59,10 @@ export default {
     padding: 20px 20px;
 }
 
+.synopsis{
+    margin-bottom: 50px;
+}
+
 .movie-teaser-video{
     text-align: center;
     width: 80%;
@@ -95,6 +99,7 @@ export default {
 .movie-top .movie-poster{
     display: block;
     margin: auto;
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.85);
 }
 
 .movie-title{
