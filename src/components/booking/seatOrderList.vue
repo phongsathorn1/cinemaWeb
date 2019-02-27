@@ -44,8 +44,12 @@ export default {
 }
 
 .booking-order .booking-order-item{
-    padding: 10px;
+    padding: 20px 15px;
     border-bottom: 1px solid #636363;
+}
+
+.booking-order li:last-child .booking-order-item{
+    border-bottom: none;
 }
 
 .booking-order .booking-order-header{

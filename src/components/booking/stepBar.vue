@@ -1,6 +1,6 @@
 <template>
-    <div class="step-bar">
-        <div class="card">
+    <div class="step-bar clearfix">
+        <!-- <div class="card"> -->
             <ul class="desktop-step-bar">
                 <li class="step-item" :class="{active: step == 1}" @click="selected(1)">
                     <div class="no">1</div>
@@ -19,7 +19,7 @@
                     <div class="step-name">เสร็จสิ้น</div>
                 </li>
             </ul>
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
 
 .step-bar{
     margin-bottom: 20px;
+    padding: 20px 0px;
 }
 
 .desktop-step-bar{

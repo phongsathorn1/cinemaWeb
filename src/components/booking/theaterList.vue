@@ -11,7 +11,7 @@
                 <div class="col-md-9">
                     <div class="booking-theater-times">
                         <button
-                            class="btn btn-light"
+                            class="btn btn-time"
                             v-for="time in theater.times"
                             @click="selected(location, theater, time)"
                             :key="time"
@@ -42,10 +42,22 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
 .booking-theater-list {
     margin-top: 10px;
 }
 
+.btn-time{
+  background: $secondary-bg-color;
+  border: 1px solid $border-color;
+  color: #F0F0F0;
+}
+
+.btn-time:hover{
+  border-color: $accent-color;
+  color: $accent-color;
+}
 .booking-theater-item {
     background: #2b2b2b;
     padding: 15px 20px;

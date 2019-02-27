@@ -78,5 +78,11 @@ export default {
 </script>
 
 <style lang="scss">
+#order .booking-ticket .booking-ticket-item{
+    padding: 20px 30px;
+}
 
+#order .booking-ticket .booking-ticket-item .total-price{
+    margin: 0px;
+}
 </style>

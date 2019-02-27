@@ -1,7 +1,7 @@
 <template>
     <div class="booking-success">
         <div class="card">
-            <h1>ดำเนินการสั่งซื้อเสร็จสิ้น</h1>
+            <h1 class="success-title">ดำเนินการสั่งซื้อเสร็จสิ้น</h1>
             <show-ticket 
             :order="order"
             :enablePrint="true"
@@ -25,5 +25,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+.booking-success .success-title{
+    text-align: center;
+    margin: 20px 0px;
+}
 </style>

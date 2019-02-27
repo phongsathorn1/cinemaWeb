@@ -1,24 +1,35 @@
 <template>
     <div class="payment-methods">
-        <h3>เลือกช่องทางการชำระเงิน</h3>
+        <h2>เลือกช่องทางการชำระเงิน</h2>
         <ul id="payment-methods" class="list-group list-group-horizontal payment-methods-list">
-            <li class="list-group-item" @click="select('cash')">
+            <li class="list-group-item" 
+            :class="{active: method == 'cash'}"
+            @click="select('cash')">
                 เงินสด
             </li>
-            <li class="list-group-item" @click="select('credit-card')">
+            <li class="list-group-item"
+            :class="{active: method == 'credit-card'}"
+            @click="select('credit-card')"
+            >
                 บัตรเครดิต / บัตรเดบิต
             </li>
-            <li class="list-group-item" @click="select('promptpay')">
+            <li class="list-group-item" 
+            :class="{active: method == 'promptpay'}"
+            @click="select('promptpay')">
                 พร้อมเพย์ (PromptPay)
             </li>
         </ul>
 
         <div id="cash" class="payment-dialog" v-if="method == 'cash'">
-            คุณสามารถชำระเงินได้ที่หน้าเคาท์เตอร์ โดยนำ QR Code ที่ท่านได้รับหลังจากกด "ชำระเงิน"
+            <p class="payment-help">คุณสามารถชำระเงินได้ที่หน้าเคาท์เตอร์ โดยนำ QR Code ที่ท่านได้รับหลังจากกด "ชำระเงิน"</p>
         </div>
 
         <div id="creditcard" class="payment-dialog" v-if="method == 'credit-card'">
             <p class="payment-help">กรุณากรอกรายละเอียด</p>
+            <div class="creditcard-support">
+                <div class="creditcard-icon visa">visa</div>
+                <div class="creditcard-icon mastercard">mastercard</div>
+            </div>
             <form>
                 <div class="form-group">
                     <label for="name_on_card">ชื่อผู้ถือบัตร</label>
@@ -46,7 +57,11 @@
         </div>
 
         <div id="promptpay" class="payment-dialog" v-if="method == 'promptpay'">
-            QR Code
+            <div class="promptpay-qr">
+                <img src="@/assets/promptpay-qr.png">
+            </div>
+            <p class="payment-help">แสกน QR Code เพื่อชำระเงิน</p>
+            <p>เมื่อชำระเงินเสร็จแล้ว กรุณารอสักครู่</p>
         </div>
 
         <div id="creditcard" class="payment-dialog" v-if="method == null">
@@ -93,13 +108,14 @@ export default {
 
 .payment-dialog{
     background-color: $third-color;
-    // border: 1px solid $border-color;
     padding: 20px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .payment-help{
     font-size: 20px;
+    margin-bottom: 0px;
 }
 
 .payment-methods{
@@ -111,6 +127,49 @@ export default {
 }
 
 .payment-methods-list .list-group-item:hover{
-    background-color: $third-color;
+    background-color: #585858;
+    border-color: #585858;
+}
+
+.payment-methods-list .list-group-item.active{
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: #000000;
+    font-weight: bold;
+}
+
+.promptpay-qr{
+    width: 300px;
+    margin: 10px auto;
+    margin-bottom: 20px;
+}
+
+.promptpay-qr img{
+    width: 100%;
+}
+
+.creditcard-icon{
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    width: 110px;
+    overflow: hidden;
+    text-indent: -1000px;
+    padding: 10px 0px;
+    position: relative;
+    left: 10px;
+}
+
+.creditcard-icon.mastercard{
+    background-image: url('../../assets/mastercard.svg')
+}
+
+.creditcard-icon.visa{
+    background-image: url('../../assets/visa.svg')
+}
+
+.creditcard-support{
+    margin: 20px 0px;
 }
 </style>

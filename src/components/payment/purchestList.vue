@@ -1,6 +1,6 @@
 <template>
     <div class="booking-purchest">
-        <h3>รายการการสั่งซื้อ</h3>
+        <h2>รายการการสั่งซื้อ</h2>
         <div class="booking-purchest-container">
             <div class="row">
                 <div class="col-md-5">
@@ -20,7 +20,16 @@
                     <div class="booking-purchest-order">
                         <seat-order-list :booking="order.booking"></seat-order-list>
                         <div class="booking-order-total">
-                            รวม {{this.total}} บาท
+                            <div class="row">
+                                <div class="col-3 booking-order-col">
+                                    ทั้งหมด<br>
+                                    <span class="total-price">รวม</span>
+                                </div>
+                                <div class="col-3 booking-order-col">
+                                    {{this.totalTicket}} ใบ<br>
+                                    <span class="total-price">{{this.total}} บาท</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,6 +59,11 @@ export default {
             this.total = this.order.booking.seats.reduce((total, x) => total+x.price, 0)
         }
     },
+    computed:{
+        totalTicket(){
+            return this.order.booking.seats.length
+        }
+    }
 }
 </script>
 
@@ -80,4 +94,17 @@ export default {
     border-left: 1px solid #636363;
 }
 
+.booking-order-total {
+    font-size: 18px;
+    padding: 10px 30px;
+}
+
+.booking-order-col{
+    text-align: left;
+}
+
+.booking-purchest-order .total-price{
+    font-weight: bold;
+    color: $accent-color;
+}
 </style>

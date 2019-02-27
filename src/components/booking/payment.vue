@@ -2,15 +2,19 @@
     <div class="booking-payment">
         <div class="card">
             <h1>ยืนยันการซื้อบัตรชมภาพยนตร์</h1>
-            <h2>ข้อมูลทั่วไป</h2>
-            <div class="booking-account-info">
-                <h3>{{getName()}}</h3>
-                <p><b>อีเมล์</b> {{account.email}}</p>
+            <div class="booking-section">
+                <h2>ข้อมูลทั่วไป</h2>
+                <div class="booking-account-info">
+                    <h3>{{getName()}}</h3>
+                    <p><b>อีเมล์</b> {{account.email}}</p>
+                </div>
             </div>
-
-            <purchest-list :order="order"></purchest-list>
-
-            <select-methods></select-methods>
+            <div class="booking-section">
+                <purchest-list :order="order"></purchest-list>
+            </div>
+            <div class="booking-section">
+                <select-methods></select-methods>
+            </div>
 
             <button class="btn btn-success btn-payment-confirm" @click="pay">ชำระเงิน <span v-if="total">({{total}} บาท)</span></button>
         </div>
@@ -54,17 +58,36 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../style/main.scss';
+
 .booking-payment h1{
     margin-bottom: 20px;
 }
 
 .booking-payment h2{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
+}
+
+.booking-account-info{
+    padding: 10px 30px;
+    background: $third-color;
+}
+
+.booking-account-info p{
+    margin-bottom: 0px;
+}
+
+.booking-account-info h3{
+    font-size: 18px;
 }
 
 .btn-payment-confirm{
     margin-top: 20px;
+}
+
+.booking-section{
+    margin: 20px 0px;
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row movie-booking-section">
+        <!-- <div class="row movie-booking-section">
             <div class="col-md-12">
                 <div class="card movie-booking-top">
                     <div class="row">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row movie-booking-section">
             <div class="col-md-12">
                 <step-bar :step="step" @back="gotoStep($event)"></step-bar>
@@ -49,12 +49,12 @@
                         <!-- <img :src="movie.image_url"> -->
                         <h3>{{movie.name.th}}</h3>
                         <p>{{movie.name.en}}</p>
-                        <hr>
+                        <img :src="movie.image_url">
                         <p v-if="booking.theater"><b>โรงภาพยนตร์</b> {{booking.theater}}</p>
                         <p v-if="booking.location"><b>สถานที่</b> {{booking.location}}</p>
                         <p v-if="booking.round"><b>รอบฉาย</b> {{booking.round}}</p>
-                        <hr>
                         <template v-if="bookingSeat">
+                            <hr>
                             <p><b>ที่นั่ง</b> {{bookingSeat.seats}}</p>
                             <p><b>ราคา</b> {{bookingSeat.total}}</p>
 
@@ -293,7 +293,9 @@ h1{
 }
 
 .movie-booking-check img{
-    width: 100%;
+    width: 60%;
+    display: block;
+    margin: 10px auto;
 }
 
 .movie-booking-check h3{
