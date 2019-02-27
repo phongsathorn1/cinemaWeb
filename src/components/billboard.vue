@@ -34,6 +34,31 @@
                 </div>
             </slide>
             <slide>
+                <div class="billboard-ticket-slide" v-bind:style="'background-image: url('+publicPath+'movies/images/slider/friendzone.jpg)'">
+                    <div class="billboard-overlay">
+                    </div>
+                    <div class="billboard-ticket-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="billboard-ticket">
+                                        <img :src="publicPath+'movies/images/friendzone.jpg'">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex align-content-end flex-wrap">
+                                    <div class="billboard-ticket-info">
+                                        <h1>เฟรนโซน ระวังสิ้นสุดทางเพื่อน</h1>
+                                        <p class="subtitle">Friend Zone</p>
+                                        <br>
+                                        <router-link tag="button" class="btn btn-primary" :to="'/movie/1'">ดูรายละเอียด</router-link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+            <slide>
                 <div class="billboard-slide" style="background-image: url('https://lh3.googleusercontent.com/9591330yAsqzf2G-CXou4T99TaDFvmhBwu4INqngvE1xufQjiO8IAh4mjj7fds69fYyisaVpi9BYnCNHKsDI7Q=w1920')"></div>
             </slide>
         </carousel>
