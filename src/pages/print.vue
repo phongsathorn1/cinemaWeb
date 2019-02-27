@@ -25,7 +25,9 @@ export default {
         this.getOrder(this.$route.params.id)
     },
     updated(){
-        window.print()
+        setTimeout(()=>{
+            window.print()
+        }, 1000)
     },
     methods:{
         getOrder(orderId){
