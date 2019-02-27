@@ -2,6 +2,9 @@
     <div class="booking-payment">
         <div class="card">
             <h1>ยืนยันการซื้อบัตรชมภาพยนตร์</h1>
+            <div class="booking-section time-counter">
+                <h2>ท่านมีเวลาในการดำเนินการให้เสร็จสิ้นใน {{getLifeTime}}</h2>
+            </div>
             <div class="booking-section">
                 <h2>ข้อมูลทั่วไป</h2>
                 <div class="booking-account-info">
@@ -13,10 +16,10 @@
                 <purchest-list :order="order"></purchest-list>
             </div>
             <div class="booking-section">
-                <select-methods></select-methods>
+                <select-methods @selected="selected = true"></select-methods>
             </div>
 
-            <button class="btn btn-success btn-payment-confirm" @click="pay">ชำระเงิน <span v-if="total">({{total}} บาท)</span></button>
+            <button class="btn btn-success btn-payment-confirm" @click="pay" :disabled="!selected">ชำระเงิน <span v-if="total">({{total}} บาท)</span></button>
         </div>
     </div>
 </template>
@@ -24,6 +27,7 @@
 <script>
 import SelectMethods from '../payment/selectMethods.vue'
 import PurchestList from '../payment/purchestList.vue'
+import swal from 'sweetalert'
 
 export default {
     props: ['account', 'order'],
@@ -34,7 +38,9 @@ export default {
     data: () => {
         return {
             paymentMethod: null,
-            total: 0
+            total: 0,
+            time: 60,
+            selected: false
         }
     },
     created(){
@@ -53,6 +59,10 @@ export default {
             })
         }
         this.getTotal()
+
+        setInterval(()=>{
+            this.time -= 1
+        }, 1000)
     },
     methods:{
         methodSelected(method){
@@ -66,6 +76,43 @@ export default {
         },
         pay(){
             this.$emit('pay')
+        },
+        timeout(){
+            swal({
+                title: "หมดเวลาดำเนินการ",
+                text: "ระบบจะพาท่านกลับสู่หน้าแรก",
+                icon: "warning",
+                buttons: {
+                    confirm:{
+                        text: "ตกลง"
+                    }
+                }
+            }).then(value => {
+                this.$router.push('/')
+            })
+        }
+    },
+    computed:{
+        getLifeTime(){
+            let strTime = (Math.floor(this.time / 60)) +":"+ (this.time - (Math.floor(this.time / 60) * 60))
+            let minutes = strTime.split(":")[0]
+            let seconds = strTime.split(":")[1]
+
+            if(minutes.length < 2){
+                minutes = "0"+minutes
+            }
+            if(seconds.length < 2){
+                seconds = "0"+seconds
+            }
+
+            return minutes+":"+seconds
+        }
+    },
+    watch:{
+        time(){
+            if(this.time <= 0){
+                this.timeout()
+            }
         }
     }
 }
@@ -84,8 +131,9 @@ export default {
 }
 
 .booking-account-info{
-    padding: 10px 30px;
+    padding: 15px 30px;
     background: $third-color;
+    font-size: 1.2em;
 }
 
 .booking-account-info p{
@@ -102,6 +150,21 @@ export default {
 
 .booking-section{
     margin: 20px 0px;
+}
+
+.payment-dialog .form-control{
+    background: #2b2b2b;
+}
+
+.time-counter{
+    padding: 10px;
+    border: 1px solid $accent-color;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.time-counter h2{
+    margin-bottom: 0px;
 }
 
 </style>
