@@ -6,7 +6,7 @@
                     <div class="col-6">
                         <select class="select-theater" v-model="theather" @change="theaterSearch">
                             <option value="เลือกโรงภาพยนต์">เลือกโรงภาพยนต์</option>
-                            <option :value="t" v-for="t in theathers">{{t}}</option>
+                            <option :value="t" v-for="t in theathers" :key="t">{{t}}</option>
                             <!-- <option value="เซนทรัล ปิ่นเกล้า">เซนทรัล ปิ่นเกล้า</option>
                             <option value="เซนทรัล เวิร์ล">เซนทรัล เวิร์ล</option> -->
                         </select>
@@ -33,7 +33,6 @@ export default {
     },
     methods:{
         search(){
-            console.log('change')
             this.$emit('search', this.keyword)
         },
         theaterSearch(){

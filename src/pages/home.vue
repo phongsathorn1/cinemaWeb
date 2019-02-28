@@ -68,7 +68,7 @@ export default {
     search(event){
       let keyword = event.toLowerCase()
       this.movies = movies.movies
-      let thSearch = []
+      
       if(keyword == ''){
         this.theatherSearch(this.theater)
       }else{

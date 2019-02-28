@@ -66,7 +66,6 @@ export default {
         
                     orders.forEach(order => {
                         if(order.account.email == this.account.email){
-                            console.log("deleted")
                             order.purchests = this.orders
                         }
                     })

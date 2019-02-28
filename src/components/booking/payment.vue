@@ -54,7 +54,7 @@ export default {
                         text: "เข้าสู่ระบบ"
                     }
                 }
-            }).then(value => {
+            }).then(() => {
                 this.$router.push('/login')
             })
         }
@@ -87,7 +87,7 @@ export default {
                         text: "ตกลง"
                     }
                 }
-            }).then(value => {
+            }).then(() => {
                 this.$router.push('/')
             })
         }

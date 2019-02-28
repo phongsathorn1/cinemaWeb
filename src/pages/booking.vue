@@ -1,20 +1,5 @@
 <template>
     <div class="container">
-        <!-- <div class="row movie-booking-section">
-            <div class="col-md-12">
-                <div class="card movie-booking-top">
-                    <div class="row">
-                        <div class="col-1">
-                            <img :src="movie.image_url">
-                        </div>
-                        <div class="col-10">
-                            <h1>{{movie.name.th}}</h1>
-                            <p>{{movie.name.en}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="row movie-booking-section">
             <div class="col-md-12">
                 <step-bar :step="step" @back="gotoStep($event)"></step-bar>
@@ -110,7 +95,6 @@ import Payment from '../components/booking/payment.vue'
 import Success from '../components/booking/success.vue'
 import SeatType from '../components/booking/seatType.vue'
 import Helper from '../helper.js'
-import swal from 'sweetalert'
 
 export default {
     components:{
