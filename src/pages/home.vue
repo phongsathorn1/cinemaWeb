@@ -4,7 +4,7 @@
     <div id="new-movie-section">
       <div class="container">
         <search-box
-        :theathers="getTheaters()"
+        :theathers="theaters"
         @search="search($event)"
         @theatersearch="theatherSearch($event)"
         ></search-box>
@@ -43,11 +43,12 @@ export default {
   data: () => {
     return {
       movies: movies.movies,
-      theater: null
+      theater: null,
+      theaters: []
     };
   },
   created(){
-    this.getTheaters()
+    this.theaters = this.getTheaters()
   },
   methods:{
     getTheaters(){
