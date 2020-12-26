@@ -1,5 +1,7 @@
 # cinema-web
 
+Visit live version at: https://workshop.phongsathorn.me/cinemaWeb/
+
 ## Preview
 <img src="images/Screen Shot 2019-02-27 at 21.54.18.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.54.30.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.54.40.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.54.50.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.55.08.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.55.18.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.55.29.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.55.52.png" width="50%"><img src="images/Screen Shot 2019-02-27 at 21.56.04.png" width="50%">
 
